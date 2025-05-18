@@ -17,6 +17,8 @@ private:
     unsigned int _iterations; // iterations of alg
     PopulationStats logger; // stat logging for alg run
     bool enableLogging; // is logging enabled
+
+    Solution* findBestNeighbour();
 public:
     TabuSearch(
             const IEvaluator &problem,
