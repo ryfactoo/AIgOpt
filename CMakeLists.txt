@@ -21,6 +21,9 @@ add_executable(alg_opt main.cpp
         NeighbourhoodGen/INeighbours.h
         NeighbourhoodGen/MutationNeighbours.h
         Util/PopulationStats.h
+        Solution/Solution.cpp
+        Solution/Solution.cpp
+        NeighbourhoodGen/MutationNeighbours.cpp
 )
 
 target_include_directories(alg_opt
