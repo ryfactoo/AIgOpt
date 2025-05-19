@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
             ->check(CLI::PositiveNumber);
 
 
-    CLI11_PARSE(app, argc, argv)
+    CLI11_PARSE(app, argc, argv);
 
 
     threads = std::min(runNum, threads);
