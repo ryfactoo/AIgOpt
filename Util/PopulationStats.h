@@ -4,6 +4,7 @@
 #include <vector>
 #include "Solution/Solution.h"
 #include "csv.hpp"
+#include <climits>
 
 // min max avg std current
 using Stats = std::tuple<int, int, double, double, int>;

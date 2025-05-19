@@ -1,4 +1,5 @@
 #include "TabuList.h"
+#include <algorithm>
 
 bool TabuList::contains(const Solution &solution) const {
     auto xd = std::find(circularBuffer.begin(), circularBuffer.end(), solution) != circularBuffer.end();

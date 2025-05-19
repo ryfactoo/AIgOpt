@@ -31,6 +31,8 @@ public:
     ~Solution() = default;
     bool operator==(const Solution &rhs) const;
     bool operator!=(const Solution &rhs) const;
+
+    void printGenotype();
 };
 
 

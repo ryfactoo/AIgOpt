@@ -1,6 +1,8 @@
 #include <algorithm>
 #include <utility>
 #include "Solution.h"
+#include <climits>
+#include <iostream>
 
 int Solution::getScore() const {
     return score;
@@ -68,3 +70,9 @@ bool Solution::isEvaluated() {
 }
 
 Solution &Solution::operator=(const Solution &other) = default;
+
+void Solution::printGenotype() {
+    for (int n : genotype) {
+        std::cout << n << ' ';
+    }
+}

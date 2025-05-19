@@ -1,4 +1,5 @@
 #include "Metaheuristic/TabuSearch.h"
+#include <memory>
 
 TabuSearch::TabuSearch(
         const IEvaluator &problem,

@@ -1,5 +1,9 @@
 # Prerequisites
 *.d
+.vscode
+build
+vcpkg
+vcpkg_installed
 
 # Compiled Object files
 *.slo
