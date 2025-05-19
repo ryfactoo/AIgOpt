@@ -80,8 +80,9 @@ int main(int argc, char *argv[]) {
     auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
     std::cout << "score,genotype\n";
     for (auto& sol: results) {
-        //TODO solution path output (probably convert in evaluator?)
-        std::cout << sol.getScore() << ",\"" << "\"\n";
+        std::cout << sol.getScore() << ",\"";
+        sol.printGenotype();
+        std::cout << "\"\n";
     }
     std::cerr << "Took " << elapsed.count() << " ms\n";
     return 0;

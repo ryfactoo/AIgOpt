@@ -7,8 +7,8 @@ bool TabuList::contains(const Solution &solution) const {
 }
 
 void TabuList::push_back(const Solution &solution) {
-//    if (circularBuffer.size() == maxSize)
-//        circularBuffer.pop_front();
+    if (circularBuffer.size() == maxSize)
+        circularBuffer.pop_front();
     circularBuffer.push_back(solution);
 }
 

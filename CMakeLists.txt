@@ -4,7 +4,6 @@ project(alg_opt)
 set(CMAKE_CXX_STANDARD 17)
 set(VCPKG_MANIFEST_MODE ON)
 
-find_package(boost_circular_buffer CONFIG REQUIRED)
 find_package(boost_multi_array CONFIG REQUIRED)
 find_package(boost_json CONFIG REQUIRED)
 find_package(unofficial-vincentlaucsb-csv-parser CONFIG REQUIRED)
@@ -27,6 +26,11 @@ add_executable(alg_opt main.cpp
         NeighbourhoodGen/MutationNeighbours.cpp
         Evaluator/CVRP.cpp
         Util/MetaheuristicLoader.h
+        Mutate/Inverse.cpp
+        Mutate/Shuffle.cpp
+        Mutate/Swap.cpp
+        Metaheuristic/TabuSearch/TabuList.cpp
+        Metaheuristic/TabuSearch/TabuSearch.cpp
 )
 
 target_include_directories(alg_opt
@@ -35,7 +39,6 @@ target_include_directories(alg_opt
 )
 
 target_link_libraries(alg_opt
-        PRIVATE Boost::circular_buffer
         PRIVATE Boost::multi_array
         PRIVATE Boost::json
         PRIVATE unofficial::vincentlaucsb-csv-parser::csv
