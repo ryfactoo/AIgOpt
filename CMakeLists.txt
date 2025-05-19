@@ -24,6 +24,8 @@ add_executable(alg_opt main.cpp
         Solution/Solution.cpp
         Solution/Solution.cpp
         NeighbourhoodGen/MutationNeighbours.cpp
+        Evaluator/CVRP.cpp
+        Util/MetaheuristicLoader.h
 )
 
 target_include_directories(alg_opt
