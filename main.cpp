@@ -3,19 +3,22 @@
 #include "CLI/CLI.hpp"
 #include "Util/ProblemLoader.h"
 #include "Util/MetaheuristicLoader.h"
+#include "Evaluator/CVRP2.h"
+#include "Util/RandomUtils.h"
 
 
 int main(int argc, char *argv[]) {
-    enum Evaluators {
-        CVRP
+    enum class Evaluators {
+        CVRP,
+        CVRP2
     };
     std::map<std::string, Evaluators> evaluatorMapping{
-            {"cvrp", CVRP}
+            {"cvrp",  Evaluators::CVRP},
+            {"cvrp2", Evaluators::CVRP2},
     };
 
     CLI::App app{"AO course project"};
     argv = app.ensure_utf8(argv);
-
     Evaluators evaluator;
     app.add_option("-e, --evaluator", evaluator, "Evaluator for problem")
             ->required()
@@ -49,7 +52,15 @@ int main(int argc, char *argv[]) {
 
 
     threads = std::min(runNum, threads);
-    auto problem = loadCVRP(instancePath);
+    std::unique_ptr<IEvaluator> problem;
+    if (evaluator == Evaluators::CVRP) {
+        problem = loadCVRP<CVRP>(instancePath);
+    } else if (evaluator == Evaluators::CVRP2) {
+        problem = loadCVRP<CVRP2>(instancePath);
+    } else {
+        std::cerr << "Unknown evaluator type\n";
+        return 1;
+    }
     auto jsonConfig = readJson(cfgPath);
     bool logging = (bool) (*logOption);
     if (logging) {

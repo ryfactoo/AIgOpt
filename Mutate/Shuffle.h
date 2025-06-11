@@ -8,12 +8,23 @@
 class Shuffle : public IMutate {
 private:
     std::mt19937 rng;
-    std::uniform_int_distribution<> firstDist;
-    std::uniform_int_distribution<> secondDist;
+    std::uniform_int_distribution<> dist;
 public:
-    explicit Shuffle(int genotypeSize);
+    explicit Shuffle(int genotypeSize) :
+            IMutate(genotypeSize),
+            rng(std::random_device()()),
+            dist(0, genotypeSize - 1) {}
 
-    void mutate(std::vector<int> &genotype) override;
+    void mutate(std::vector<int> &genotype) override {
+        int first = dist(rng);
+        int last = dist(rng);
+        while (genotype[first] == genotype[last]) {
+            last = dist(rng);
+        }
+        if (first > last)
+            std::swap(first, last);
+        std::shuffle(genotype.begin() + first, genotype.begin() + last, rng);
+    }
 };
 
 

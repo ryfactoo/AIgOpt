@@ -15,7 +15,7 @@ private:
 protected:
     std::vector<int> genotypeValues;
 public:
-    IEvaluator(int size, std::string &instanceName) : genotypeValues(size), instanceName(instanceName) {}
+    IEvaluator(int size, std::string &instanceName) : genotypeValues(size, 0), instanceName(instanceName) {}
 
     [[nodiscard]] virtual int evaluate(const std::vector<int> &genotype) const = 0;
 

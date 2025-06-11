@@ -26,11 +26,12 @@ add_executable(alg_opt main.cpp
         NeighbourhoodGen/MutationNeighbours.cpp
         Evaluator/CVRP.cpp
         Util/MetaheuristicLoader.h
-        Mutate/Inverse.cpp
-        Mutate/Shuffle.cpp
-        Mutate/Swap.cpp
         Metaheuristic/TabuSearch/TabuList.cpp
         Metaheuristic/TabuSearch/TabuSearch.cpp
+        Heuristic/CVRPGreedy.h
+        Evaluator/CVRP2.cpp
+        Evaluator/CVRP2.h
+        Util/RandomUtils.h
 )
 
 target_include_directories(alg_opt

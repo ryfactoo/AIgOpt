@@ -6,9 +6,7 @@
 #include <filesystem>
 #include "Evaluator/IEvaluator.h"
 #include "Evaluator/CVRP.h"
-
-
-std::unique_ptr<CVRP> loadCVRP(const std::filesystem::path &path);
+#include "Evaluator/CVRP2.h"
 
 std::ifstream readProblem(const std::filesystem::path &filename) {
     std::ifstream file(filename);
@@ -18,7 +16,8 @@ std::ifstream readProblem(const std::filesystem::path &filename) {
     return file;
 }
 
-std::unique_ptr<CVRP> loadCVRP(const std::filesystem::path &path){
+template <typename CVRPType>
+std::unique_ptr<CVRPType> loadCVRP(const std::filesystem::path &path){
     auto file = readProblem(path);
     std::string name, line;
     int size, capacity;
@@ -62,7 +61,7 @@ std::unique_ptr<CVRP> loadCVRP(const std::filesystem::path &path){
             }
         }
     }
-    return std::make_unique<CVRP>(name, coords, demands, capacity);
+    return std::make_unique<CVRPType>(name, coords, demands, capacity);
 }
 
 #endif //ALG_OPT_PROBLEMLOADER_H
