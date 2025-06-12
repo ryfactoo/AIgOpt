@@ -4,11 +4,11 @@
 #include <iostream>
 
 template <typename T>
-void print(const T& container) {
+void print(const T& container, std::string_view end = "\n", std::ostream& os = std::cout) {
     for (const auto& elem : container) {
-        std::cout << elem << ' ';
+        os << elem << ' ';
     }
-    std::cout << '\n';
+    os << end;
 }
 
 #endif //ALG_OPT_RANDOMUTILS_H

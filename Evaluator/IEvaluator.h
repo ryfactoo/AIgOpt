@@ -27,6 +27,8 @@ public:
         return genotypeValues;
     }
 
+    [[nodiscard]] virtual std::vector<int> getFenotype(const std::vector<int>& genotype) const = 0;
+
     virtual ~IEvaluator() = default;
 };
 

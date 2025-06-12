@@ -51,3 +51,21 @@ int CVRP::evaluate(const std::vector<int> &genotype) const {
     score += distanceMatrix[prevCity][0];
     return score;
 }
+
+std::vector<int> CVRP::getFenotype(const std::vector<int> &genotype) const {
+    std::vector<int> fenotype;
+    fenotype.push_back(0);
+    int usedCapacity = 0;
+    for (auto city: genotype) {
+        if (usedCapacity + demands[city] <= capacity) {
+            fenotype.push_back(city);
+            usedCapacity += demands[city];
+        } else {
+            fenotype.push_back(0);
+            fenotype.push_back(city);
+            usedCapacity = demands[city];
+        }
+    }
+    fenotype.push_back(0);
+    return fenotype;
+}

@@ -5,6 +5,7 @@
 #include "Util/MetaheuristicLoader.h"
 #include "Evaluator/CVRP2.h"
 #include "Util/RandomUtils.h"
+#include "Heuristic/CVRPGreedy.h"
 
 
 int main(int argc, char *argv[]) {
@@ -57,6 +58,9 @@ int main(int argc, char *argv[]) {
         problem = loadCVRP<CVRP>(instancePath);
     } else if (evaluator == Evaluators::CVRP2) {
         problem = loadCVRP<CVRP2>(instancePath);
+        auto xd = cvrp_greedy(*dynamic_cast<CVRP2*>(problem.get()));
+        std::cerr << "Greedy solution:\n" << xd.getScore() << ",\"";
+        print(xd.getGenotype(), "\"\n", std::cerr);
     } else {
         std::cerr << "Unknown evaluator type\n";
         return 1;
@@ -89,11 +93,10 @@ int main(int argc, char *argv[]) {
     pool.wait();
     auto end = std::chrono::system_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    std::cout << "score,genotype\n";
+    std::cout << "score,fenotype\n";
     for (auto& sol: results) {
         std::cout << sol.getScore() << ",\"";
-        sol.printGenotype();
-        std::cout << "\"\n";
+        print(problem->getFenotype(sol.getGenotype()), "\"\n");
     }
     std::cerr << "Took " << elapsed.count() << " ms\n";
     return 0;

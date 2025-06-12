@@ -24,6 +24,8 @@ public:
 
     [[nodiscard]] int evaluate(const std::vector<int> &genotype) const override;
 
+    [[nodiscard]] virtual std::vector<int> getFenotype(const std::vector<int>& genotype) const override;
+
     int getDistance(int cityA, int cityB);
 
     int getDemand(int city);
