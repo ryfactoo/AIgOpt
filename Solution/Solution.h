@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <random>
+#include <boost/random/xoshiro.hpp>
 #include "Evaluator/IEvaluator.h"
 
 class Solution {
@@ -18,7 +19,7 @@ public:
     Solution(std::vector<int> &&genotype, int score, const IEvaluator* evaluatedFor);
     Solution(const Solution& other);
     Solution(Solution&& other) noexcept;
-    Solution(std::vector<int> genotype, std::mt19937& rng);
+    Solution(std::vector<int> genotype, boost::random::xoshiro256pp& rng);
     Solution& operator=(const Solution &other);
     Solution& operator=(Solution &&other) noexcept;
 

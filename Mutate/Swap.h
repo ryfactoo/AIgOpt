@@ -3,11 +3,12 @@
 
 
 #include <random>
+#include <boost/random/xoshiro.hpp>
 #include "IMutate.h"
 
 class Swap : public IMutate {
 private:
-    std::mt19937 rng;
+    boost::random::xoshiro256pp rng;
     std::uniform_int_distribution<> dist;
 public:
     explicit Swap(int genotypeSize) :

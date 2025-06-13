@@ -1,21 +1,31 @@
 {
-  "name" : "alg-opt",
-  "version-string" : "0.0.1",
-  "builtin-baseline" : "782ccc18d8b819cdef6794a6c03eb3d9f7cd04aa",
-  "dependencies" : [ {
-    "name" : "boost-multi-array",
-    "version>=" : "1.87.0"
-  }, {
-    "name" : "boost-json",
-    "version>=" : "1.87.0#1"
-  }, {
-    "name" : "vincentlaucsb-csv-parser",
-    "version>=" : "2.3.0"
-  }, {
-    "name" : "cli11",
-    "version>=" : "2.5.0"
-  }, {
-    "name" : "bshoshany-thread-pool",
-    "version>=" : "5.0.0"
-  } ]
+  "name": "alg-opt",
+  "version-string": "0.0.1",
+  "builtin-baseline": "ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0",
+  "dependencies": [
+    {
+      "name": "vincentlaucsb-csv-parser",
+      "version>=": "2.3.0"
+    },
+    {
+      "name": "cli11",
+      "version>=": "2.5.0"
+    },
+    {
+      "name": "bshoshany-thread-pool",
+      "version>=": "5.0.0"
+    },
+    {
+      "name": "boost-random",
+      "version>=": "1.88.0"
+    },
+    {
+      "name": "boost-multi-array",
+      "version>=": "1.88.0"
+    },
+    {
+      "name": "boost-json",
+      "version>=": "1.88.0"
+    }
+  ]
 }

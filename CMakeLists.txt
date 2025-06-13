@@ -6,6 +6,7 @@ set(VCPKG_MANIFEST_MODE ON)
 
 find_package(boost_multi_array CONFIG REQUIRED)
 find_package(boost_json CONFIG REQUIRED)
+find_package(boost_random REQUIRED CONFIG)
 find_package(unofficial-vincentlaucsb-csv-parser CONFIG REQUIRED)
 find_package(CLI11 CONFIG REQUIRED)
 find_path(BSHOSHANY_THREAD_POOL_INCLUDE_DIRS "BS_thread_pool.hpp")
@@ -42,6 +43,7 @@ target_include_directories(alg_opt
 target_link_libraries(alg_opt
         PRIVATE Boost::multi_array
         PRIVATE Boost::json
+        PRIVATE Boost::random
         PRIVATE unofficial::vincentlaucsb-csv-parser::csv
         PRIVATE CLI11::CLI11
 )

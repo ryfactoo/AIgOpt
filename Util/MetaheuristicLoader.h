@@ -60,7 +60,7 @@ std::unique_ptr<INeighbours> parseNeighboursJson(bj::value& jv, const IEvaluator
 std::unique_ptr<IMetaheuristic> parseMetaheuristicJson(bj::value& jv, const IEvaluator& problem, bool logging){
     auto type = bj::value_to<std::string>(jv.at("type"));
     std::random_device rd;
-    std::mt19937 rng(rd());
+    boost::random::xoshiro256pp rng(rd());
     if (type == "tabu") {
         auto iter = bj::value_to<int>(jv.at("iterations"));
         auto tabuSize = bj::value_to<int>(jv.at("tabu_size"));

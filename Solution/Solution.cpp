@@ -42,7 +42,7 @@ Solution::Solution(const std::vector<int> &genotype)
 Solution::Solution(std::vector<int> &&genotype)
         : genotype(std::move(genotype)), score(INT_MAX), evaluatedFor(nullptr) {}
 
-Solution::Solution(std::vector<int> genotype, std::mt19937 &rng)
+Solution::Solution(std::vector<int> genotype, boost::random::xoshiro256pp &rng)
         : genotype(std::move(genotype)), score(INT_MAX), evaluatedFor(nullptr) {
     std::shuffle(std::begin(this->genotype), std::end(this->genotype), rng);
 }

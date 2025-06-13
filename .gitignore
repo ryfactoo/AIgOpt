@@ -38,3 +38,4 @@ vcpkg_installed
 /cmake-build-release/
 
 .idea
+/cmake-build-releasedyn/

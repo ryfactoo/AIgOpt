@@ -8,7 +8,7 @@
 
 class Inverse : public IMutate {
 private:
-    std::mt19937 rng;
+    boost::random::xoshiro256pp rng;
     std::uniform_int_distribution<> dist;
 public:
     explicit Inverse(int genotypeSize) :
