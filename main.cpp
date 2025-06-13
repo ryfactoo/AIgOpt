@@ -54,13 +54,14 @@ int main(int argc, char *argv[]) {
 
     threads = std::min(runNum, threads);
     std::unique_ptr<IEvaluator> problem;
+    std::cout << "method,score,fenotype\n";
     if (evaluator == Evaluators::CVRP) {
         problem = loadCVRP<CVRP>(instancePath);
     } else if (evaluator == Evaluators::CVRP2) {
         problem = loadCVRP<CVRP2>(instancePath);
         auto xd = cvrp_greedy(*dynamic_cast<CVRP2*>(problem.get()));
-        std::cerr << "Greedy solution:\n" << xd.getScore() << ",\"";
-        print(xd.getGenotype(), "\"\n", std::cerr);
+        std::cout << "greedy," << xd.getScore() << ",";
+        print(xd.getGenotype(), std::cout, "\"\n", "\"", " ");
     } else {
         std::cerr << "Unknown evaluator type\n";
         return 1;
@@ -93,10 +94,9 @@ int main(int argc, char *argv[]) {
     pool.wait();
     auto end = std::chrono::system_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    std::cout << "score,fenotype\n";
     for (auto& sol: results) {
-        std::cout << sol.getScore() << ",\"";
-        print(problem->getFenotype(sol.getGenotype()), "\"\n");
+        std::cout << "metaheuristic," << sol.getScore() << ',';
+        print(problem->getFenotype(sol.getGenotype()), std::cout, "\"\n", "\"", " ");
     }
     std::cerr << "Took " << elapsed.count() << " ms\n";
     return 0;

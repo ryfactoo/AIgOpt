@@ -3,10 +3,21 @@
 
 #include <iostream>
 
-template <typename T>
-void print(const T& container, std::string_view end = "\n", std::ostream& os = std::cout) {
-    for (const auto& elem : container) {
-        os << elem << ' ';
+template<typename T>
+void print(const T &container,
+           std::ostream &os = std::cout,
+           std::string_view end = "\n",
+           std::string_view begin = "",
+           std::string_view sep = " "
+) {
+    os << begin;
+    auto iter = container.begin();
+    if (iter != container.end()) {
+        os << *iter;
+        ++iter;
+    }
+    for (; iter != container.end(); ++iter) {
+        os << sep << *iter;
     }
     os << end;
 }
