@@ -20,3 +20,5 @@ natomiast tabuExample.json to plik konfiguracyjny w formacie:
 ```
 Dostępne typy mutacji: `inverse`, `swap`, `shuffle`.
 Dodatkowe opcje programu `./alg_opt.exe --help`
+
+Skompilowane programy dostępne w [Releases](https://github.com/ryfactoo/AIgOpt/releases)
