@@ -18,5 +18,5 @@ natomiast tabuExample.json to plik konfiguracyjny w formacie:
   }
 }
 ```
-Dostępne typy mutacji: inverse, swap, shuffle.
+Dostępne typy mutacji: `inverse`, `swap`, `shuffle`.
 Dodatkowe opcje programu `./alg_opt.exe --help`
